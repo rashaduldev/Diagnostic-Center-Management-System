@@ -1,13 +1,12 @@
+import { Link } from "react-router-dom";
 
 
 const Navber = () => {
     const navlinks=(
         <>
-           <li><a>Item 1</a></li>
-                        <li>
-                        <a>Parent</a>
-                        </li>
-                        <li><a>Item 3</a></li>
+           <li><a><Link to={'/'}>Home</Link></a></li>
+           <li><a><Link to={'/aboutus'}>About Us</Link></a></li>
+           <li><a><Link to={'/alltest'}>All tests</Link></a></li>            
         </>
     )
     return (
@@ -30,7 +29,9 @@ const Navber = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <Link to={'login'}>
+                    <a className="btn">Log in</a>
+                    </Link>
                 </div>
                 </div>      
         </div>
