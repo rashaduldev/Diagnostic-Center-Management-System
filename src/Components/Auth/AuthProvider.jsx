@@ -1,6 +1,5 @@
 
-
-const Auth = () => {
+const AuthProvider = () => {
     return (
         <div>
             
@@ -8,4 +7,4 @@ const Auth = () => {
     );
 };
 
-export default Auth;
+export default AuthProvider;
