@@ -6,7 +6,7 @@ const Login = () => {
         <title>Tourist | Login</title>
       </Helmet> */}
 
-      <div className="min-h-screen bg-base-100 w-full my-10">
+      <div className="bg-base-100 w-full my-10">
         <div className="flex flex-col lg:flex-row justify-center ">
           <div className="text-center flex-1  max-w-lg lg:text-left mx-auto">
             <h1 className="text-5xl font-bold text-center mb-9">Login now!</h1>

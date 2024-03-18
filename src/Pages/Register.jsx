@@ -6,7 +6,7 @@ const Register = () => {
           <title>Tourist | Signup</title>
         </Helmet> */}
         <div className="mt-10">
-          <div className="flex flex-col lg:flex-row-reverse gap-10">
+          <div className="flex flex-col lg:flex-row-reverse gap-10 justify-center py-5">
             <div className="text-center lg:text-center">
               <h1 className="text-5xl font-bold mb-9">Registation Here</h1>
               <img src="https://i.ibb.co/7Jy41BM/authentication2.png" alt="" />
