@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../Components/Auth/AuthProvider";
+import ExtraLogin from "../Components/Extralogin";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
@@ -178,7 +179,7 @@ const Login = () => {
                 Please signup
               </a>{" "}
             </p>
-            {/* <ExtraLogin></ExtraLogin> */}
+            <ExtraLogin></ExtraLogin>
           </div>
         </div>
       </div>

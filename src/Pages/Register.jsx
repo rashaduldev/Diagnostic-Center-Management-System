@@ -2,20 +2,17 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 // import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2";
-// import img from "../../assets/authentication2.png";
+import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import useAuth from "../Hooks/useAuth";
-// import useAxiosPublick from "../../Hooks/useAxiosPublick";
-// import ExtraLogin from "../../Components/ExtraLogin";
-// import useAxiosPublick from "../../Hooks/useAxiosPublick";
-// import useAxiosPublick from "../../Hooks/useAxiosPublick";
+import useAxiosPublick from "../Hooks/useAxiosPublick";
+import ExtraLogin from "../Components/Extralogin";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  // const axiosPublic = useAxiosPublick();
+  const axiosPublic = useAxiosPublick();
   const {
     register,
     handleSubmit,
@@ -30,6 +27,14 @@ const Register = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User Created Successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        navigate('/');
         const name = data.name;
         const photo = data.photoURL;
         updateUserProfile(name, photo);
@@ -198,7 +203,7 @@ const Register = () => {
               </a>{" "}
             </p>
             <div className="divider"></div>
-            {/* <ExtraLogin></ExtraLogin> */}
+            <ExtraLogin></ExtraLogin>
           </div>
         </div>
       </div>
