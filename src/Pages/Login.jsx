@@ -1,5 +1,48 @@
+import { useContext } from "react";
+import { AuthContext } from "../Components/Auth/AuthProvider";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(password, email);
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        let timerInterval;
+        Swal.fire({
+          title: "Login Successfully!",
+          html: "I will close in <b></b> milliseconds.",
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+              timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          },
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+          }
+        });
+        Navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.log("email or password not match");
+        console.log(err.message);
+      });
+  };
     return (
         <div>
       {/* <Helmet>
@@ -14,7 +57,7 @@ const Login = () => {
           </div>
           <div className="max-w-md flex-1 p-10 bg-base-200 mx-auto rounded-lg">
             {/* <!-- Form --> */}
-            <form >
+            <form onSubmit={handleLogin}>
               <div className="grid gap-y-4">
                 {/* <!-- Form Group --> */}
                 <div>
